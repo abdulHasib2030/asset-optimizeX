@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-hf&lhhx^%rq28-9^nnbb2==88h5_4v^@ruytq^_s9x$0%-6p22
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == "True"
 
-ALLOWED_HOSTS = ['127.0.01', 'localhost', "assetoptimizex.onrender.com"]
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', "assetoptimizex.onrender.com"]
 
 
 # Application definition
