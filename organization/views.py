@@ -56,9 +56,9 @@ class successView(views.APIView):
     org.premiumUser = True
     org.save()
     
-    return HttpResponseRedirect(redirect_to='http://localhost:5173/app')
+    return HttpResponseRedirect(redirect_to='http://localhost:5173/app/payment-success/')
 
-########## Permium button Click #########
+########## Permium button Click Success View #########
 class PlaceOrderPremiumView(views.APIView):
   permission_classes = [permissions.IsAuthenticated]
   
@@ -87,7 +87,16 @@ class PlaceOrderPremiumView(views.APIView):
       return response.Response(payment_url)
     except Organization.DoesNotExist:
       return response.Response('Organization Error')      
-       
+  
+###### SSL Commerce Fail View #####
+class PaymentFailView(views.APIView):
+  # permission_classes = [permissions.IsAuthenticated]
+  def post(self, request):
+    return HttpResponseRedirect(redirect_to='http://localhost:5173/app/payment-success/')
+    
+  
+  
+     
 ######### Payment History For Organization #######
 class PaymentHistoryView(views.APIView):
   # permission_classes = [permissions.IsAuthenticated]
@@ -135,9 +144,10 @@ class OrganizationRegisterView(viewsets.ModelViewSet):
       
       link = "http://localhost:5173/api/organization/register/"
       print("uid", uid, " Token", token, " link", link, 'organizationName', organization_name)
-      body = 'Click Following link to Active Your Account ' + link +  uid + '/'+ token + '/' + organization_name
+      body = f'''Hi {user.name}
+Please click on below link to confirm your Ogranization registration.''' + link +  uid + '/'+ token + '/' + organization_name
       data = {
-        'subject':'Active Your Account',
+        'subject':'Confirm your Organization account on assetOptimizeX',
         'body':body,
         'to_email':user.email,
       }
@@ -351,9 +361,13 @@ class addMemberView(views.APIView):
         org_name = urlsafe_base64_encode(force_bytes(organization_name))
         link = "http://localhost:5173/api/organization/add-user/"
         print("uid", uid, " Token", token, " link", link)
-        body = 'Click Following link to confirm invited accepted ' + link +  uid + '/'+ token + '/' + org_name
+        body = f'''{user.name} has invited You to collaborate on the {organization_name} Organization
+You can accept this invitation to click the link ''' + link +  uid + '/'+ token + '/' + org_name
+        
+      # data = {
+      #   'subject':'Confirm your Organization account on assetOptimizeX',
         data = {
-          'subject':'Invited Request',
+          'subject':f'{user.name} invited you to {organization_name}',
           'body':body,
           'to_email':email,
         }
