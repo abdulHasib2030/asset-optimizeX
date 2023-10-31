@@ -153,7 +153,7 @@ AUTH_USER_MODEL = 'account.User'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
 STATICFILES_DIRS =[
-    os.path.join(BASE_DIR,'asset_optimze_x/static')
+    os.path.join(BASE_DIR,'asset_optimzeX_server/static')
 ]
 
 MEDIA_URL ='/media/'
