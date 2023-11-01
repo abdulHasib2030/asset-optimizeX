@@ -91,7 +91,7 @@ class PlaceOrderPremiumView(views.APIView):
 class PaymentFailView(views.APIView):
   # permission_classes = [permissions.IsAuthenticated]
   def post(self, request):
-    return HttpResponseRedirect(redirect_to='http://localhost:5173/app/payment-success/')
+    return HttpResponseRedirect(redirect_to='http://localhost:5173/app/payment-failed/')
     
   
   
