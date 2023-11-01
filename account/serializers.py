@@ -105,6 +105,7 @@ class SendPasswordEmailSerializer(serializers.Serializer):
       
       ## Send Email
       body = f'''Hi {user.name}
+
 Click Following Link to Reset Your Password ''' + link
       data = {
         'subject' : f'{user.name} Reset Your Password',

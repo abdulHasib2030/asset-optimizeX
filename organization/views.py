@@ -139,15 +139,16 @@ class OrganizationRegisterView(viewsets.ModelViewSet):
       token = default_token_generator.make_token(user)
       organization_name =  serializer.data.get('organization_name')    
       
-      organization_name = urlsafe_base64_encode(force_bytes(organization_name))   
+      org_name = urlsafe_base64_encode(force_bytes(organization_name))   
       
       
       link = "http://localhost:5173/api/organization/register/"
       print("uid", uid, " Token", token, " link", link, 'organizationName', organization_name)
       body = f'''Hi {user.name}
-Please click on below link to confirm your Ogranization registration.''' + link +  uid + '/'+ token + '/' + organization_name
+
+Please click on below link to confirm your Ogranization registration.''' + link +  uid + '/'+ token + '/' + org_name
       data = {
-        'subject':'Confirm your Organization account on assetOptimizeX',
+        'subject':f'Confirm your Organization account on {organization_name}',
         'body':body,
         'to_email':user.email,
       }
@@ -362,6 +363,7 @@ class addMemberView(views.APIView):
         link = "http://localhost:5173/api/organization/add-user/"
         print("uid", uid, " Token", token, " link", link)
         body = f'''{user.name} has invited You to collaborate on the {organization_name} Organization
+
 You can accept this invitation to click the link ''' + link +  uid + '/'+ token + '/' + org_name
         
       # data = {
