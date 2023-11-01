@@ -14,6 +14,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.contrib.auth.tokens import default_token_generator
 from account.utils import Util
+import urllib.parse
 
 
 # Create your views here.
@@ -59,8 +60,19 @@ class UserProfileView(APIView):
   permission_classes = [IsAuthenticated]
    
   def get(self, request, format = None):
-    serializer = UserProfileSerializer(request.user)
-    return Response(serializer.data, status = status.HTTP_200_OK)
+    user = User.objects.get(email=request.user.email)
+   
+    dic = {}
+    dic['id'] = user.id
+    dic['name'] = user.name
+    dic['bio'] = user.bio
+    dic['email'] = user.email
+    dic['phone_number'] = user.phone_number
+    dic['image'] = user.image.url
+    dic['country'] = user.country
+    dic['zip_code'] = user.zip_code
+    
+    return Response(dic, status = status.HTTP_200_OK)
 
 ########## User Update Profile ##########
 class UserUpdateProfileView(generics.UpdateAPIView):
