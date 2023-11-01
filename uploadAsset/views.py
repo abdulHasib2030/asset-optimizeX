@@ -73,14 +73,6 @@ class AssetListCreateView(generics.ListCreateAPIView):
             # Return a response with an error message if library_id is missing
             return Response({'error': 'Library ID is required.'}, status=status.HTTP_400_BAD_REQUEST)
         
-        # if search_query:
-        #     # Use Q objects to perform case-insensitive search on multiple fields
-        #     queryset = queryset.filter(
-        #         Q(title__icontains=search_query) |
-        #         Q(description__icontains=search_query) |
-        #         Q(tags__tag_name__icontains=search_query)
-        #     )
-        
         user = self.request.user
         org = Library.objects.filter(organization__owner = user)
         

@@ -14,7 +14,6 @@ class FeedbackView(views.APIView):
       message = request.data.get('message')
       rating = request.data.get('rating')
       organization = request.data.get('organization_name')
-      print(organization)
       org_position = request.data.get('org_position')
       
       try:  

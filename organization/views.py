@@ -10,7 +10,6 @@ from organization.models import *
 from rest_framework import status, generics, views, viewsets, permissions, response
 from django.http import HttpResponseRedirect
 
-
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from organization.ssl import sslcommerz_payment_gateway
