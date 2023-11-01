@@ -98,18 +98,18 @@ WSGI_APPLICATION = 'asset_optimze_x.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-if not DEBUG:
-    DATABASES = {
+# if not DEBUG:
+DATABASES = {
         "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
-else:
-    DATABASES = {
-            'default': {
+# else:
+#     DATABASES = {
+#             'default': {
 
-                'ENGINE': 'django.db.backends.sqlite3',
-                'NAME': BASE_DIR / 'db.sqlite3',
-            }
-        }
+#                 'ENGINE': 'django.db.backends.sqlite3',
+#                 'NAME': BASE_DIR / 'db.sqlite3',
+#             }
+#         }
 
 
 
