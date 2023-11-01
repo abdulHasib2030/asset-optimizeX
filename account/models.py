@@ -49,7 +49,7 @@ class User(AbstractBaseUser):
   phone_number = models.CharField(max_length=50, unique=True )
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
-  image = models.ImageField(upload_to = 'images/account/', null=False, blank = False)
+  image = models.ImageField(upload_to = 'images/account/', null=False, blank = False, default='profile_pics/profile.jpg')
   bio = models.CharField(max_length=50,blank=False, null=False, default=False) 
   
  
