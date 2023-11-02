@@ -28,9 +28,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='django-insecure-hf&lhhx^%rq28
 DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = []
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('https://assetoptimizex.onrender.com')
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append('https://assetoptimizex.onrender.com')
+# RENDER_EXTERNAL_HOSTNAME = os.environ.get('https://assetoptimizex.onrender.com')
+# if RENDER_EXTERNAL_HOSTNAME:
+#     ALLOWED_HOSTS.append('https://assetoptimizex.onrender.com')
 
 
 # Application definition
