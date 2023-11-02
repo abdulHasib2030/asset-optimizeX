@@ -157,6 +157,7 @@ class assetAllImageView(generics.ListCreateAPIView):
     
     def get_queryset(self):
         org_id = (self.kwargs.get('org_id'))
+  
         if org_id is None:
             return response.Response({'message':'Organization Id is Required'})
         user = self.request.user

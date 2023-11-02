@@ -133,7 +133,7 @@ class AssetUpdateView(generics.UpdateAPIView):
                     else:
                         return Response({'message':"You don't have permission to Update."})
             serializer.save()
-            print("ADAKLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL", pk)
+            
             return Response({'message':'Update Successfully'})
         except uploadAsset.DoesNotExist:
             return Response({
@@ -254,7 +254,10 @@ class VideoFilter(views.APIView):
     permission_classes = [IsAuthenticated]
     
     def get(self, request, pk):
+        created_at = request.GET.get('created_at')
+        print(created_at)
         asset = uploadAsset.objects.filter(organization_id=pk)
+        
         lst = []
         for i in asset:
             st = str(i.asset)
@@ -268,6 +271,7 @@ class VideoFilter(views.APIView):
                 dic['description'] = i.description
                 dic['asset'] = i.asset.url
                 dic['location'] = i.location
+                dic['created_at'] = i.created_at
                 lst.append(dic)     
         return Response(lst)
     
