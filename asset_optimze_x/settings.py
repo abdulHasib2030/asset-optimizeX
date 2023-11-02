@@ -27,10 +27,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='django-insecure-hf&lhhx^%rq28
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = []
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('https://assetoptimizex.onrender.com')
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append('https://assetoptimizex.onrender.com')
+ALLOWED_HOSTS = ['*']
+# RENDER_EXTERNAL_HOSTNAME = os.environ.get('https://assetoptimizex.onrender.com')
+# if RENDER_EXTERNAL_HOSTNAME:
+#     ALLOWED_HOSTS.append('https://assetoptimizex.onrender.com')
 
 
 # Application definition
@@ -112,7 +112,7 @@ DATABASES = {
     'default': dj_database_url.config(
         # Feel free to alter this value to suit your needs.
         default='postgres://assetoptimizex_user:upo5dR95TLClnCmxzcd4dtczOPneSSkx@dpg-cl1qqtql7jac73evnrng-a.singapore-postgres.render.com/assetoptimizex',
-        conn_max_age=600
+        # conn_max_age=600
     )
 }
 
