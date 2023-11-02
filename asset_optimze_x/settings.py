@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='django-insecure-hf&lhhx^%rq28
 # 'django-insecure-hf&lhhx^%rq28-9^nnbb2==88h5_4v^@ruytq^_s9x$0%-6p22'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = ['*']
 # RENDER_EXTERNAL_HOSTNAME = os.environ.get('https://assetoptimizex.onrender.com')
