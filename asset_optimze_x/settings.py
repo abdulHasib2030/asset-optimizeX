@@ -111,20 +111,20 @@ WSGI_APPLICATION = 'asset_optimze_x.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Feel free to alter this value to suit your needs.
-        default='postgres://assetoptimizexdatabase_user:878JaGcnSiunntHuxEFEqkErEId8H8tk@dpg-ckn8a9n83ejs73aa91mg-a.singapore-postgres.render.com/assetoptimizexdatabase',
+        default='postgres://assetoptimizex_user:upo5dR95TLClnCmxzcd4dtczOPneSSkx@dpg-cl1qqtql7jac73evnrng-a.singapore-postgres.render.com/assetoptimizex',
         conn_max_age=600
     )
 }
 
 
 
-DATABASES = {
-            'default': {
+# DATABASES = {
+#             'default': {
 
-                'ENGINE': 'django.db.backends.sqlite3',
-                'NAME': BASE_DIR / 'db.sqlite3',
-            }
-        }
+#                 'ENGINE': 'django.db.backends.sqlite3',
+#                 'NAME': BASE_DIR / 'db.sqlite3',
+#             }
+#         }
 
 
 
