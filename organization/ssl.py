@@ -8,7 +8,7 @@ def unique_transaction_id_generator(size=10, chars=string.ascii_uppercase + stri
     return ''.join(random.choice(chars) for _ in range(size))
 
 @login_required 
-def sslcommerz_payment_gateway(request, order_id,org_id, user_id, amount):
+def sslcommerz_payment_gateway(request,user_name, order_id,org_id, user_id, amount):
     gateway_auth_details = PaymentGateWaySettings.objects.all().first()
     
     settings = {'store_id': gateway_auth_details.store_id,
@@ -24,7 +24,7 @@ def sslcommerz_payment_gateway(request, order_id,org_id, user_id, amount):
     post_body['fail_url'] = 'https://assetoptimizex.onrender.com/api/organization/failed/'
     post_body['cancel_url'] = 'https://assetoptimizex.onrender.com/'
     post_body['emi_option'] = 0
-    post_body['cus_name'] = "test"
+    post_body['cus_name'] = user_name
     post_body['cus_email'] = 'request.user.email'  # Retrieve email from the current user session
     post_body['cus_phone'] = 'request.user.phone'  # Retrieve phone from the current user session
     post_body['cus_add1'] = 'Nothing'  # Retrieve address from the current user session

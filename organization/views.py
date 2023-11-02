@@ -82,7 +82,7 @@ class PlaceOrderPremiumView(views.APIView):
       lst['user_id'] = request.user.id
       lst['amount'] = 1000
       order.save()
-      payment_url = sslcommerz_payment_gateway(request, order.id, pk, request.user.id, 1000)
+      payment_url = sslcommerz_payment_gateway(request,request.user.name, order.id, pk, request.user.id, 1000)
       return response.Response(payment_url)
     except Organization.DoesNotExist:
       return response.Response('Organization Error')      
@@ -93,7 +93,6 @@ class PaymentFailView(views.APIView):
   def post(self, request):
     return HttpResponseRedirect(redirect_to='http://localhost:5173/app/payment-failed/')
     
-  
   
      
 ######### Payment History For Organization #######
@@ -452,7 +451,7 @@ class MemberPermissionUpdateView(generics.UpdateAPIView):
               return response.Response({'message':'Update Successfully'})
         except addMember.DoesNotExist:
             return response.Response({
-                'message':'Not valid asset'
+                'message':'Not valid'
             })
  
  

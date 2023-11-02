@@ -21,12 +21,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-hf&lhhx^%rq28-9^nnbb2==88h5_4v^@ruytq^_s9x$0%-6p22'
+SECRET_KEY = os.environ.get('SECRET_KEY', default='django-insecure-hf&lhhx^%rq28-9^nnbb2==88h5_4v^@ruytq^_s9x$0%-6p22')
+# 'django-insecure-hf&lhhx^%rq28-9^nnbb2==88h5_4v^@ruytq^_s9x$0%-6p22'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', "assetoptimizex.onrender.com"]
+ALLOWED_HOSTS = []
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('https://assetoptimizex.onrender.com')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append('https://assetoptimizex.onrender.com')
 
 
 # Application definition
@@ -103,6 +107,17 @@ WSGI_APPLICATION = 'asset_optimze_x.wsgi.application'
 #         "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
 #     }
 # else:
+
+DATABASES = {
+    'default': dj_database_url.config(
+        # Feel free to alter this value to suit your needs.
+        default='postgres://assetoptimizexdatabase_user:878JaGcnSiunntHuxEFEqkErEId8H8tk@dpg-ckn8a9n83ejs73aa91mg-a.singapore-postgres.render.com/assetoptimizexdatabase',
+        conn_max_age=600
+    )
+}
+
+
+
 DATABASES = {
             'default': {
 
