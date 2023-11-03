@@ -1,0 +1,20 @@
+databases:
+  - name: https://assetoptimizex.onrender.com
+    databaseName: assetOptimizeX
+    user: https://assetoptimizex.onrender.com
+
+services:
+  - type: web
+    name: https://assetoptimizex.onrender.com
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn mysite.wsgi:application"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: assetOptimizeX
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4

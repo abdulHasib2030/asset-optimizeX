@@ -166,7 +166,7 @@ class assetAllImageView(generics.ListCreateAPIView):
             if i.id == org_id:
                 queryset = uploadAsset.objects.filter(organization_id = org_id)   
                 return queryset
-        org_member = Organization.objects.filter(owner=user)
+        org_member = Organization.objects.filter(member =user)
         for i in org_member:
             if i.id == org_id:
                 queryset = uploadAsset.objects.filter(organization_id = org_id)
